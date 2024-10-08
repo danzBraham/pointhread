@@ -8,7 +8,7 @@ export default async function DashboardLayout({ children }) {
     redirect("/login");
   }
 
-  const { user } = await prisma.session.findUnique({
+  const user = await prisma.session.findUnique({
     where: {
       id: sessionId,
     },
@@ -27,7 +27,7 @@ export default async function DashboardLayout({ children }) {
 
   return (
     <main>
-      <h1>{user.username}</h1>
+      <h1>{user.user.username}</h1>
       <section>{children}</section>
     </main>
   );
