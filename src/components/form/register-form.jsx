@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
-import { registerUser } from "@/actions/auth/register-user";
+import { registerUser } from "@/actions/auth/register";
 
 export function RegisterForm() {
   const [_state, action, pending] = useActionState(registerUser, null);
