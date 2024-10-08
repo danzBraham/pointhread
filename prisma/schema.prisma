@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @id @default(cuid()) @db.VarChar(32)
+  username    String       @db.VarChar(100)
+  email       String       @unique @db.VarChar(50)
+  password    String?      @db.VarChar(90)
+  avatarUrl   String?
+  collections Collection[] @relation("UserCollections")
+  summaries   Summary[]    @relation("UserSummaries")
+  session     Session?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @default(now())
+}
+
+model Session {
+  id String @id @default(cuid()) @db.VarChar(32)
+
+  userId String @unique @db.VarChar(32)
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Collection {
+  id        String    @id @default(cuid()) @db.VarChar(32)
+  name      String    @db.VarChar(50)
+  summaries Summary[] @relation("CollectionSummaries")
+
+  userId String @db.VarChar(32)
+  user   User   @relation("UserCollections", fields: [userId], references: [id])
+}
+
+model Summary {
+  id          String @id @default(cuid()) @db.VarChar(32)
+  summary     String
+  thread_link String
+
+  userId String @db.VarChar(32)
+  user   User   @relation("UserSummaries", fields: [userId], references: [id])
+
+  collectionId String?     @db.VarChar(32)
+  collection   Collection? @relation("CollectionSummaries", fields: [collectionId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
