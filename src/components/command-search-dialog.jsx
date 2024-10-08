@@ -37,7 +37,7 @@ export function CommandSearchDialog() {
     <>
       <Button
         variant="outline"
-        className="w-[350px] justify-between p-2"
+        className="h-full w-[350px] justify-between p-2"
         onClick={handleSearchButtonClick}
       >
         <div className="flex items-center gap-2 opacity-50">

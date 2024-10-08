@@ -72,7 +72,7 @@ export default async function DashboardLayout({ children }) {
             <CommandSearchDialog />
 
             <Button className="h-full gap-2">
-              <PlusIcon className="stroke-1" />
+              <PlusIcon className="h-5 w-5 stroke-1" />
               New Summary
             </Button>
           </div>
