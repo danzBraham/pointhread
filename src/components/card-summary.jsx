@@ -35,8 +35,8 @@ export const CardSummary = () => {
                 </Link>
             </CardHeader>
             <CardContent>
-                <CardTitle className="text-xl">React Best Practices</CardTitle>
-                <CardDescription>Learn the best practices for React</CardDescription>
+                <CardTitle className="text-xl text-ellipsis overflow-hidden whitespace-nowrap">React Best Practices</CardTitle>
+                <CardDescription className="text-ellipsis overflow-hidden whitespace-nowrap">Learn the best practices for React</CardDescription>
             </CardContent>
             <CardFooter className="flex justify-between items-center">
                 <CardDescription>08 Oct 2024 </CardDescription>
