@@ -1,3 +1,4 @@
+"use client"
 import {
     AlertDialog,
     AlertDialogAction,
@@ -9,14 +10,14 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { TrashIcon } from "@radix-ui/react-icons"
+import { Trash2Icon } from "lucide-react"
 import { Button } from "../ui/button"
 export const ConfirmDelete = () => {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button size="icon" className="bg-red-500">
-                    <TrashIcon className="w-4 h-4" />
+                    <Trash2Icon className="w-6 h-6" />
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -28,11 +29,11 @@ export const ConfirmDelete = () => {
                         This action cannot be undone. This will permanently delete this summary from your collection.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>Continue</AlertDialogAction>
+                </AlertDialogFooter>
             </AlertDialogContent>
-            <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
-            </AlertDialogFooter>
         </AlertDialog>
     )
 }
