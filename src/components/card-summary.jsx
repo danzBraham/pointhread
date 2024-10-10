@@ -30,7 +30,7 @@ export const CardSummary = () => {
                         <CardDescription>@Nickname</CardDescription>
                     </section>
                 </section>
-                <Link href={`https://x.com/${prisma.user.username}`} target="_blank">
+                <Link href={`https://x.com/$`} target="_blank">
                     <FaXTwitter className="w-6 h-6" />
                 </Link>
             </CardHeader>
