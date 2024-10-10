@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Trash2Icon } from "lucide-react"
 import { Button } from "../ui/button"
+import { deleteSummary } from "@/actions/auth/deleteSummary"
+
+
 export const ConfirmDelete = () => {
     return (
         <AlertDialog>
@@ -31,7 +34,9 @@ export const ConfirmDelete = () => {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
+                    <form action={deleteSummary}>
+                        <AlertDialogAction>Continue</AlertDialogAction>
+                    </form>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
