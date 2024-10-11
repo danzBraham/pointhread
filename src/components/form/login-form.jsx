@@ -3,10 +3,10 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
-import { loginUser } from "@/actions/auth/login";
+import { login } from "@/actions/auth/login";
 
 export function LoginForm() {
-  const [_state, action, pending] = useActionState(loginUser, null);
+  const [_state, action, pending] = useActionState(login, null);
 
   return (
     <form action={action} className="space-y-2" autoComplete="off">
