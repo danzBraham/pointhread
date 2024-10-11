@@ -7,6 +7,6 @@ import { redirect } from "next/navigation";
 export async function logout(_prevState, _formData) {
   const sessionId = cookies().get("sessionId")?.value;
   await prisma.session.delete({ where: { id: sessionId } });
-  cookies().delete("session");
+  cookies().delete("sessionId");
   redirect("/login");
 }
