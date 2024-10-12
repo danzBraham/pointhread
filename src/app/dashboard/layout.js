@@ -7,6 +7,7 @@ import { ButtonSidebar } from "@/components/button-sidebar";
 import { PlusIcon, LogOutIcon } from "lucide-react";
 import { CommandSearchDialog } from "@/components/command-search-dialog";
 import { logout } from "@/actions/auth/logout";
+import Link from "next/link";
 
 export default async function DashboardLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
@@ -36,9 +37,11 @@ export default async function DashboardLayout({ children }) {
       <aside className="flex w-[250px] flex-col justify-between border-r border-slate-200 p-5">
         <div className="space-y-6">
           <section className="flex items-center justify-between">
-            <h3 className="text-xl font-bold tracking-tight">
-              Poin<span className="text-rose-500">thread</span>
-            </h3>
+            <Link href="/dashboard">
+              <h3 className="text-xl font-bold tracking-tight">
+                Poin<span className="text-rose-500">thread</span>
+              </h3>
+            </Link>
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
