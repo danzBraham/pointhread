@@ -42,10 +42,12 @@ export default async function DashboardLayout({ children }) {
                 Poin<span className="text-rose-500">thread</span>
               </h3>
             </Link>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <Link href="/dashboard/profile">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </Link>
           </section>
 
           <section className="space-y-4">
