@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ButtonSidebar } from "@/components/button-sidebar";
 import { PlusIcon, LogOutIcon } from "lucide-react";
 import { CommandSearchDialog } from "@/components/command-search-dialog";
+import { logout } from "@/actions/auth/logout";
 
 export default async function DashboardLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
@@ -58,10 +59,12 @@ export default async function DashboardLayout({ children }) {
           </section>
         </div>
 
-        <Button className="w-full gap-2 bg-rose-500 hover:bg-rose-400">
-          <LogOutIcon className="stroke-slate-50 stroke-1" />
-          Log Out
-        </Button>
+        <form action={logout}>
+          <Button className="w-full cursor-pointer gap-2 bg-rose-500 hover:bg-rose-400">
+            <LogOutIcon className="stroke-slate-50 stroke-1" />
+            Log Out
+          </Button>
+        </form>
       </aside>
 
       <div className="w-full">

@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function registerUser(_prevState, formData) {
+export async function register(_prevState, formData) {
   const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");

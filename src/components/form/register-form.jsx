@@ -3,10 +3,10 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
-import { registerUser } from "@/actions/auth/register";
+import { register } from "@/actions/auth/register";
 
 export function RegisterForm() {
-  const [_state, action, pending] = useActionState(registerUser, null);
+  const [_state, action, pending] = useActionState(register, null);
 
   return (
     <form action={action} className="space-y-2" autoComplete="off">
