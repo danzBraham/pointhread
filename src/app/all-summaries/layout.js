@@ -3,18 +3,18 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ButtonSidebar } from "@/components/button-sidebar";
 import { PlusIcon, LogOutIcon } from "lucide-react";
 import { CommandSearchDialog } from "@/components/command-search-dialog";
 import { logout } from "@/actions/auth/logout";
+import CollectionNav from "@/components/collection-nav";
 
-export default async function DashboardLayout({ children }) {
+export default async function AllSummariesLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
   if (!sessionId) {
     redirect("/login");
   }
 
-  const userData = await prisma.session.findUnique({
+  const session = await prisma.session.findUnique({
     where: {
       id: sessionId,
     },
@@ -28,7 +28,7 @@ export default async function DashboardLayout({ children }) {
     },
   });
 
-  if (!userData) {
+  if (!session) {
     redirect("/register");
   }
 
@@ -41,23 +41,12 @@ export default async function DashboardLayout({ children }) {
               Poin<span className="text-rose-500">thread</span>
             </h3>
             <Avatar>
-              <AvatarImage src={userData.user.avatarUrl || "https://github.com/shadcn.png"} />
-              <AvatarFallback>{userData.user.username.charAt(0).toUpperCase()}</AvatarFallback>
+              <AvatarImage src={session.user.avatarUrl || "https://github.com/shadcn.png"} />
+              <AvatarFallback>{session.user.username.charAt(0).toUpperCase()}</AvatarFallback>
             </Avatar>
           </section>
 
-          <section className="space-y-4">
-            <ButtonSidebar label="All Summaries" isOpen={true} />
-
-            <div className="space-y-3">
-              <p>Collections</p>
-              <div className="space-y-2">
-                <ButtonSidebar label="Coding" isOpen={false} />
-                <ButtonSidebar label="Health" isOpen={false} />
-                <ButtonSidebar label="Work" isOpen={false} />
-              </div>
-            </div>
-          </section>
+          <CollectionNav userId={session.userId} />
         </div>
 
         <form action={logout}>
@@ -70,7 +59,7 @@ export default async function DashboardLayout({ children }) {
 
       <div className="w-full">
         <section className="flex w-full items-center justify-between border-b border-slate-200 px-6 py-4">
-          <h2 className="font-semibold capitalize">Hello {userData.user.username} 👋</h2>
+          <h2 className="font-semibold capitalize">Hello {session.user.username} 👋</h2>
 
           <div className="flex items-center gap-2">
             <CommandSearchDialog />

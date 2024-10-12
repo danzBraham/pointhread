@@ -26,5 +26,5 @@ export async function login(_prevState, formData) {
   const session = await prisma.session.create({ data: { userId: user.id } });
   await cookies().set("sessionId", session.id);
 
-  redirect("/dashboard");
+  redirect("/all-summaries");
 }

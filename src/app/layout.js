@@ -13,7 +13,7 @@ export const metadata = {
     "An AI-powered web application designed to extract and summarize the key points from long Twitter threads.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>

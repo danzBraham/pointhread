@@ -30,6 +30,7 @@ model Session {
 model Collection {
   id        String    @id @default(cuid()) @db.VarChar(32)
   name      String    @db.VarChar(50)
+  slug      String    @db.VarChar(50)
   summaries Summary[] @relation("CollectionSummaries")
 
   userId String @db.VarChar(32)

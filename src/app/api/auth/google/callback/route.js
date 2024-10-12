@@ -21,7 +21,7 @@ export async function GET(req) {
   if (user) {
     const session = await prisma.session.create({ data: { userId: user.id } });
     await cookies().set("sessionId", session.id);
-    redirect("/dashboard");
+    redirect("/all-summaries");
   }
 
   const { name, picture } = userData;
@@ -34,5 +34,5 @@ export async function GET(req) {
   });
   const session = await prisma.session.create({ data: { userId: newUser.id } });
   await cookies().set("sessionId", session.id);
-  redirect("/dashboard");
+  redirect("/all-summaries");
 }
