@@ -7,6 +7,7 @@ import { PlusIcon, LogOutIcon } from "lucide-react";
 import { CommandSearchDialog } from "@/components/command-search-dialog";
 import { logout } from "@/actions/auth/logout";
 import CollectionNav from "@/components/collection-nav";
+import Link from "next/link";
 
 export default async function AllSummariesLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
@@ -37,9 +38,11 @@ export default async function AllSummariesLayout({ children }) {
       <aside className="flex w-[250px] flex-col justify-between border-r border-slate-200 p-5">
         <div className="space-y-6">
           <section className="flex items-center justify-between">
-            <h3 className="text-xl font-bold tracking-tight">
-              Poin<span className="text-rose-500">thread</span>
-            </h3>
+            <Link href="/all-summaries">
+              <h3 className="text-xl font-bold tracking-tight">
+                Poin<span className="text-rose-500">thread</span>
+              </h3>
+            </Link>
             <Avatar>
               <AvatarImage src={session.user.avatarUrl || "https://github.com/shadcn.png"} />
               <AvatarFallback>{session.user.username.charAt(0).toUpperCase()}</AvatarFallback>
