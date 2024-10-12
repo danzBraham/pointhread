@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import google from "@/assets/icon/google.svg";
 import { LoginForm } from "@/components/form/login-form";
+import { LoginGoogleForm } from "@/components/form/login-google-form";
 
 export default function Login() {
   return (
@@ -25,10 +23,7 @@ export default function Login() {
             <div className="h-[1px] w-full rounded-full bg-slate-950"></div>
           </div>
 
-          <Button variant="outline" className="w-full space-x-2">
-            <Image src={google} alt="google logo" />
-            <span>Continue with Google</span>
-          </Button>
+          <LoginGoogleForm />
         </div>
 
         <p>

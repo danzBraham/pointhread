@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }) {
     redirect("/login");
   }
 
-  const user = await prisma.session.findUnique({
+  const userData = await prisma.session.findUnique({
     where: {
       id: sessionId,
     },
@@ -22,12 +22,13 @@ export default async function DashboardLayout({ children }) {
       user: {
         select: {
           username: true,
+          avatarUrl: true,
         },
       },
     },
   });
 
-  if (!user) {
+  if (!userData) {
     redirect("/register");
   }
 
@@ -40,8 +41,8 @@ export default async function DashboardLayout({ children }) {
               Poin<span className="text-rose-500">thread</span>
             </h3>
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarImage src={userData.user.avatarUrl || "https://github.com/shadcn.png"} />
+              <AvatarFallback>{userData.user.username.charAt(0).toUpperCase()}</AvatarFallback>
             </Avatar>
           </section>
 
@@ -69,7 +70,7 @@ export default async function DashboardLayout({ children }) {
 
       <div className="w-full">
         <section className="flex w-full items-center justify-between border-b border-slate-200 px-6 py-4">
-          <h2 className="font-semibold capitalize">Hello {user.user.username} 👋</h2>
+          <h2 className="font-semibold capitalize">Hello {userData.user.username} 👋</h2>
 
           <div className="flex items-center gap-2">
             <CommandSearchDialog />
