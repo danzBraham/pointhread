@@ -76,13 +76,13 @@ importers:
         version: 1.0.7(tailwindcss@3.4.13)
     devDependencies:
       eslint:
-        specifier: ^8
+        specifier: ^8.57.1
         version: 8.57.1
       eslint-config-next:
         specifier: 15.0.0-canary.175
         version: 15.0.0-canary.175(eslint@8.57.1)(typescript@5.6.3)
       postcss:
-        specifier: ^8
+        specifier: ^8.4.47
         version: 8.4.47
       prettier:
         specifier: ^3.3.3
@@ -91,7 +91,7 @@ importers:
         specifier: ^0.6.8
         version: 0.6.8(prettier@3.3.3)
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: ^3.4.13
         version: 3.4.13
 
 packages:

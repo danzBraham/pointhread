@@ -9,7 +9,7 @@ import { logout } from "@/actions/auth/logout";
 import CollectionNav from "@/components/collection-nav";
 import Link from "next/link";
 
-export default async function AllSummariesLayout({ children }) {
+export default async function MainLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
   if (!sessionId) {
     redirect("/login");
