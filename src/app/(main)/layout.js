@@ -8,6 +8,7 @@ import { CommandSearchDialog } from "@/components/command-search-dialog";
 import { logout } from "@/actions/auth/logout";
 import CollectionNav from "@/components/collection-nav";
 import Link from "next/link";
+import BreadcrumbNav from "@/components/breadcrumb-nav";
 
 export default async function MainLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
@@ -73,6 +74,8 @@ export default async function MainLayout({ children }) {
             </Button>
           </div>
         </section>
+
+        <BreadcrumbNav />
 
         <section>{children}</section>
       </div>
