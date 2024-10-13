@@ -16,7 +16,7 @@ export default async function CollectionNav({ userId }) {
     <nav className="space-y-4">
       <SidebarLink name="All Summaries" slug="all-summaries" />
 
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <div className="flex items-center justify-between">
           <p>Collections</p>
           <CreateCollectionForm />
@@ -31,7 +31,7 @@ export default async function CollectionNav({ userId }) {
             <EmptyState message="Don't have collection" />
           )}
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 }

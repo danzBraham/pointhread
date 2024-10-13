@@ -10,13 +10,13 @@ import {
   TweetMedia,
 } from "react-tweet";
 import { Suspense } from "react";
-import { getTweet } from "react-tweet/api";
+import { getTweet as _getTweet } from "react-tweet/api";
 import { TweetNotFound, TweetSkeleton } from "react-tweet";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Trash2Icon } from "lucide-react";
 import DeleteSummaryDialog from "./form/delete-summary-dialog";
+import { unstable_cache } from "next/cache";
 
 export const MyTweet = ({ tweet: t, components, summaryId }) => {
   const tweet = enrichTweet(t);
@@ -39,6 +39,8 @@ export const MyTweet = ({ tweet: t, components, summaryId }) => {
     </TweetContainer>
   );
 };
+
+const getTweet = unstable_cache(async (id) => _getTweet(id), ["tweet"], { revalidate: 3600 * 24 });
 
 const TweetContent = async ({ id, components, onError, ...props }) => {
   const tweet = id
