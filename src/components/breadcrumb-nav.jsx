@@ -37,7 +37,7 @@ export default function BreadcrumbNav() {
   const breadcrumbs = processBreadcrumbPath(pathname);
 
   return (
-    <Breadcrumb className="px-2 py-3">
+    <Breadcrumb>
       <BreadcrumbList>
         {breadcrumbs.map((crumb, index) => (
           <Fragment key={crumb.slug}>

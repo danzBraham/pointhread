@@ -9,6 +9,7 @@ import { logout } from "@/actions/auth/logout";
 import CollectionNav from "@/components/collection-nav";
 import Link from "next/link";
 import BreadcrumbNav from "@/components/breadcrumb-nav";
+import { CreateSummary } from "@/components/form/create-sumary-form";
 
 export default async function MainLayout({ children }) {
   const sessionId = await cookies().get("sessionId")?.value;
@@ -36,7 +37,7 @@ export default async function MainLayout({ children }) {
 
   return (
     <main className="flex min-h-screen">
-      <aside className="flex w-[250px] flex-col justify-between border-r border-slate-200 p-5">
+      <aside className="fixed inset-y-0 left-0 z-[9] flex w-[250px] flex-col justify-between border-r border-slate-200 bg-slate-50 p-5">
         <div className="space-y-6">
           <section className="flex items-center justify-between">
             <Link href="/all-summaries">
@@ -61,23 +62,21 @@ export default async function MainLayout({ children }) {
         </form>
       </aside>
 
-      <div className="w-full">
+      <div className="ml-[250px] w-full">
         <section className="flex w-full items-center justify-between border-b border-slate-200 px-6 py-4">
           <h2 className="font-semibold capitalize">Hello {session.user.username} 👋</h2>
 
           <div className="flex items-center gap-2">
-            <CommandSearchDialog />
+            {/* <CommandSearchDialog /> */}
 
-            <Button className="h-full gap-2">
-              <PlusIcon className="h-5 w-5 stroke-1" />
-              New Summary
-            </Button>
+            <CreateSummary />
           </div>
         </section>
 
-        <BreadcrumbNav />
-
-        <section>{children}</section>
+        <div className="space-y-2 p-4">
+          <BreadcrumbNav />
+          <section className="overflow-y-auto">{children}</section>
+        </div>
       </div>
     </main>
   );
