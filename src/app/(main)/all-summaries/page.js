@@ -1,8 +1,11 @@
 import { CardTweet } from "@/components/card-tweet";
 import { prisma } from "@/utils/prisma";
+import { cookies } from "next/headers";
 
 export default async function Dashboard() {
-  const summaries = await prisma.summary.findMany();
+  const sessionId = await cookies().get("sessionId")?.value;
+  const session = await prisma.session.findUnique({ where: { id: sessionId } });
+  const summaries = await prisma.summary.findMany({ where: { userId: session.userId } });
 
   return (
     <div className="light columns-3 gap-4">

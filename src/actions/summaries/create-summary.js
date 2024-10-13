@@ -76,7 +76,7 @@ export async function createSummary(_prevState, formData) {
         role: "user",
         content: [
           {
-            text,
+            text: `Summarize this long thread tweet post delimited by triple backtick. \`\`\`${text}\`\`\``,
             type: "text",
           },
         ],
