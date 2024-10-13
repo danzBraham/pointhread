@@ -62,8 +62,8 @@ const TweetContent = async ({ id, components, onError, ...props }) => {
 };
 
 const components = {
-  AvatarImg: (props) => <Image {...props} />,
-  MediaImg: (props) => <Image {...props} fill unoptimized />,
+  AvatarImg: (props) => <Image {...props} alt="Avatar Image" />,
+  MediaImg: (props) => <Image {...props} fill unoptimized alt="Media Img" />,
 };
 
 export const CardTweet = ({ fallback = <TweetSkeleton />, ...props }) => (
